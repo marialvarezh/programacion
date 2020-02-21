@@ -42,12 +42,21 @@ summary(vv)
 boxplot(vv, main = "my vector")
 ```
 
-**referencias de Markdown (dos asteriscos para negrita)**
+esto se escribe en markdown `r mean(vv)` esto es un _texto cursiva_  y 
 
-*un asterisco para cursiva*  
+ecuacion en linea: $A =\pi* r^{2}$
 
-# titulo      
+# titulo 1  
 ## titulo 2   
-### titulo 3  
+##titulo 3  
 
-`r mean(vv)`
+![alt text](imagen.png)
+
+```{r}
+knitr::
+```
+
+![alt text](https://lh3.googleusercontent.com/proxy/MYQ9ZRPA7MDEy530FOoumpqMGyYT7p_ijgH9Jv-sItvy7TCeyOw0pypUaicX6F_KFVt4k2PMV78ggBqxWwGMpQsXj-A4Y7LEq47skPtoyObeig)
+
+
+
