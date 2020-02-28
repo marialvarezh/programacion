@@ -18,7 +18,7 @@ knitr::opts_chunk$set(echo = TRUE)
  
  <div id="refs"></div>
  
- entonnces podemos seguir escribiendo y se tendrían que haber insertado las referencias 
+ entonces podemos seguir escribiendo y se tendrían que haber insertado las referencias 
  
  
  
