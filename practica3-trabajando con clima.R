@@ -3,34 +3,60 @@ getwd()
 ##Autores: Daniel García Betancort y María Carmen Álvarez Hernández 
 ##Fecha: 17/03/2020 
 
-#establecemos el directorio de trabajo
+##Directorio de trabajo####
 getwd()
 setwd()
 
-##cargamos las librerias necesarias que esten instaladas previmente con install.packges()
+##Instalamos las librerias necesarias con la función install.packages()####
+##vamoms a utilizar la libreria envirem para ello
+##se requiere instalar las librerias: sp, raster, palinsol y gsl
+install.packages("sp")
+install.packages("raster")
+install.packages("palinsol")
+install.packages("gsl")
+install.packages("envirem")
+install.packages("dplyr")
 library(sp)
 library(raster)
+library(palinsol)
+library(gsl)
 library(envirem)
+library(dplyr)
+
 
 ##Descargamos los datos de clima desde la pagina Chelsa 
-##escenario de 2014-2016; meses julio y agosto; temperatura maxima
 
-##para abril el archivo raster con los datos temperaturas julio y agosto 
+##Datos con el modelo ACCESS####
+##para poder abrir los archivos raster utilizamos la función raster
+
+##escenario de 2041-2060; temperatura maxima; rcp85
 TempJulio <- raster("datosclima\\CHELSA_tasmax_mon_ACCESS1-0_rcp85_r1i1p1_g025.nc_7_2041-2060_V1.2.tif") 
 TempAgosto <- raster("datosclima\\CHELSA_tasmax_mon_ACCESS1-0_rcp85_r1i1p1_g025.nc_8_2041-2060_V1.2.tif")
 
+##escenario de 2041-2060; precipitacion mensual; rcp85
+PrecipJulio <- raster("datosclima\\CHELSA_pr_mon_ACCESS1-0_rcp85_r1i1p1_g025.nc_7_2041-2060.tif")
+PrecipAgosto <- raster("datosclima\\CHELSA_pr_mon_ACCESS1-0_rcp85_r1i1p1_g025.nc_8_2041-2060.tif")
 
+##NECESITAMOS VER COMO SE PONIAN TODAS LAS FUNCIONES EN UNA. NO ME ACUERDO 
 class(TempJulio) 
 class(TempAgosto)
+class(PrecipJulio)
+class(PrecipAgosto)
 
-extent(TempJulio)##extent da las coordenadas minimas y las maximas
+extent(TempJulio) ##extent da las coordenadas minimas y las maximas
 extent(TempAgosto)
+extent(PrecipJulio)
+extent(PrecipAgosto)
 
 ncell(TempJulio)#ncell da el numero total de celdas
 ncell(TempAgosto)
+ncell(PrecipJulio)
+ncell(PrecipAgosto)
 
 crs(TempJulio)#crs para ver el sistema de coordenadas 
 crs(TempAgosto)
+crs(PrecipJulio)
+crs(PrecipAgosto)
 
 plot(TempJulio)
 
@@ -46,7 +72,19 @@ temperatura<-  hist(recorte, col= "red") ##visualizamos los datos en un histogra
 
 View(recorte)
 src(recorte)
-
 summary(recorte)
 class(recorte)
-ddddd
+
+
+##Datos con el modelo FIO-ESM####
+##para poder abrir el archivo raster utilizamos la función raster
+
+##escenario de 2041-2060; temperatura maxima; rcp85
+TempJulioFIO <- raster("datosclima\\CHELSA_pr_mon_FIO-ESM_rcp85_r1i1p1_g025.nc_7_2041-2060.tif")
+TempAgostoFIO <- raster("datosclima\\CHELSA_pr_mon_FIO-ESM_rcp85_r1i1p1_g025.nc_8_2041-2060.tif")
+
+##escenario de 2041-2060; precipitacion mensual; rcp85
+PrecipJulioFIO <- raster("datosclima\\CHELSA_tasmax_mon_FIO-ESM_rcp85_r1i1p1_g025.nc_8_2041-2060_V1.2 (1).tif")
+PrecipAgostoFIO <- raster("datosclima\\CHELSA_tasmax_mon_FIO-ESM_rcp85_r1i1p1_g025.nc_8_2041-2060_V1.2.tif")
+
+plot(PrecipAgostoFIO)
